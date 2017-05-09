@@ -18,6 +18,8 @@ Chicago Mercantile Exchange group and Microsoft joined forces to build a help de
 - Key technologies used
   - [Bot Framework](https://dev.botframework.com/)
   - [LUIS: Language Understanding Intelligent Service](https://www.luis.ai/)
+  - [Confluence API](https://docs.atlassian.com/confluence/REST/latest/)
+
 - Core Team 
   - Stephen McCarthy, Senior Software Engineer in Test at CME
   - [Justine Cocchi](https://twitter.com/justinecocchi), Technical Evangelist at Microsoft
@@ -35,10 +37,9 @@ Chicago Mercantile Exchange group and Microsoft joined forces to build a help de
  
 ## Problem statement ##
 
-This section will define the problem(s)/challenges that the customer wants to address with a CaaP solution. Include things like costs, customer experience, etc.
- 
-*If you’d really like to make your write-up pop, include a customer quote that highlights the customer’s problem(s)/challenges. Attribute all quotes with Name, Title, Company.*
+As workers for a financial institution, CME developers have to abide by many standards during their development such as password policies and content regulations. Because there are far too many to memorize, CME developers often find themselves interrupting their workflow to search Confluence, CME's internal document store, for the proper policy. This results in a loss of time due to context switching. Additionally, the Confluence search experience itself leads some users to spend copious amounts of time looking for the correct policy. 
 
+A bot accessible through Skype, one of the company's internal messaging systems, or even accessible through a Visual Studio plugin using the direct line channel, will help the developers to remain focused while searching for the proper policy by simply asking the bot to find it for them. For the purposes of our hackfest we focused on just adding the Skype channel.
 
  
 ## Solution and steps ##
@@ -50,25 +51,7 @@ This section should include the following details:
 
 - What was worked on and what problem it helped solve.
 
-- Architecture diagram/s (**required**). Example below:
-
- ![IoT Architecture Diagram](/images/templates/caaparchitecture.png)
-
-**Directions for adding images:**
-
-1. Create a folder for your project images in the “images” folder in the GitHub repo files. This is where you will add all of the images associated with your write-up.
- 
-2. Add links to your images using the following absolute path:
-
-  `![Description of the image]({{site.baseurl}}/images/projectname/myimage.png)`
-    
-  Here’s an example: 
-
-  `![Value Stream Mapping]({{site.baseurl}}/images/orckestra/orckestra2.jpg)`
-
- Note that capitalization of the file name and the file extension must match exactly for the images to render properly.
-
-*If you’d really like to make your write-up pop, include a customer quote that highlights the solution. Attribute all quotes with Name, Title, Company.*
+ ![Architecture Diagram](/images/architecture.PNG)
 
 
 ## Technical delivery ##
