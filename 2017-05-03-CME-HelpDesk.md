@@ -63,11 +63,11 @@ The second intial problem we ran into was not being able to access the LUIS API 
 With all of our prerequisties set up and all of our necessary software installed, we were ready to begin development of our bot soluton. A description of our dialog flow is outlined below in the Technical Delivery section.
 
 - [Document Search Dialog](#document-search-dialog)
-- [Adding LUIS Entities to Enhance Search](#adding-luis-entities)
+- [Adding LUIS Entities to Enhance Search](#adding-luis-entities-to-enchance-search)
 
 ## Technical Delivery ##
 
-The bot solution we built follows the knowledge base pattern. We are using LUIS to parse any entities the user might have entered which help to guide our search of the Confluence data store. First, we return results based off of the title of the articles in our data store and then we return results based on a text match inside of each document. This way our bot capabilities are much more discoverable and users don't have to specifiy the title of the document to find the information they need.
+The bot solution we built follows the knowledge base pattern. We are using LUIS to parse any entities the user might have entered which help to guide our search of the Confluence data store. First, we return results based off of the title of the articles in our data store and then we return results based on a text match inside of each document. This way our bot capabilities are much more discoverable and users don't have to specifiy the title of the document to find the information they need. This is described in more detail in each of the sections below.
 
 <!-- Need acess to the code to fully flesh out this section -->
 ### Document Search Dialog ###
