@@ -62,7 +62,7 @@ The initial brainstorming session concluded with a white board of ideas and poss
 
 To address CME Group's goals, the dialog flow solution was created to streamline the conversation between the user and the bot with the following architecture.
 
- ![Architecture Diagram](images/Architecture.PNG)
+ ![Architecture Diagram](images/architecture.png)
 
 The following steps were taken to create the overall solution:
 1. Install [Visual Studio Code](https://code.visualstudio.com/)
