@@ -120,6 +120,13 @@ The entities created for this bot were:
 <!--TODO: Insert code snippet or image for LUIS -->
 ![placeholder](http://placehold.it/350x150?text=Placeholder)
 
+
+Future technical opportunities include:
+- Improving the authentication flow to allow any user to login to their Confluence account
+- Retrain LUIS to better identify intents and entities
+- Structure the dialog to allow LUIS to be utilized after the waterfall has begun
+  - This is a known flaw with the Bot Framework that is being addressed
+
  ### Prerequisite Steps and Intial Roadblocks ###
 
 There were several prerequiste steps and installations before we could begin working on this project, which are listed above. Installing Visual Studio Code and Node.js allowed us to start building our bot, however when it came time to test the bot for the first time we couldn't use the Bot Framework Channel Emulator. Because CME is a financial institution with a lot of protective regulations, employees can only download software available through their internal store. The Channel Emulator we needed to test our bot was not on that list of approved downloads. While we waited for a representative from CME to approve the Channel Emulator as an approved download, we switched our bot to use the ConsoleConnector instead of the standard ChatConnecter. This allowed us to remain productive and test our conversation flow before adding in UI elements meant for rich channels. 
@@ -128,29 +135,12 @@ The second intial problem we ran into was not being able to access the LUIS API 
 
 ## Conclusion ##
 
-This section will briefly summarize the technical story with the following details included:
+In the weeks following, CME Group can publish this bot to preferred channels such as Skype or Slack and enable all developers to use the application. There are many future possibilities that can be enabled as well such as extending the solution to all CME Group employees to increase productivity across the entire organization. Additional goals are to include cognitive services to improve the conversational flow such as converting speech to text and text to speech. The bot’s abilities to identify the intent of the user and the search term will get better as LUIS gathers more data and is retrained.
 
-- Measurable impact/benefits resulting from the implementation of the solution.
-- General lessons:
-  - Insights the team came away with
-  - What can be applied or reused for other environments or customers?
-- Opportunities going forward:
-  - Details on how the customer plans to proceed or what more they hope to accomplish
-
-*If you’d really like to make your write-up pop, include a customer quote highlighting impact, benefits, general lessons, and/or opportunities.*
-
-<!--TODO: Update Conclusion section-->
-
-
+CME Group also has many of the tools approved for building future projects with the Bot Framework because of this project and a setup for operating with the internal network such as the Bot Framework and Guest Wifi. Once this bot is approved by the security team and is placed in production, CME Group developers and users will have the opportunity to create and explore the possibilities of enabling all customers and employees with bots to increase productivity everywhere.
 
 ## Additional resources ##
-In this section, include a list of links to resources that complement your story, including (but not limited to) the following:
 
-- Documentation
-- Blog posts
-- GitHub repos
-- Etc…
-
-<!--TODO: Update additional resource-->
-- [Document Search Dialog](#document-search-dialog)
-- [Adding LUIS Entities to Enhance Search](#adding-luis-entities-to-enchance-search)
+- [LUIS documentation](https://www.luis.ai/)
+- [Bot Framework](https://dev.botframework.com/)
+- [Confluence content collaboration software](https://www.atlassian.com/software/confluence)
