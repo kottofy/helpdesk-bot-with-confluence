@@ -43,7 +43,7 @@ As employees for an institution with strong security regulations due to the hand
 
 A bot accessible through an application used on a regular basis such as Skype, one of the company's internal messaging systems, or through a Visual Studio plugin would help the developers to remain focused while searching for the proper policy by simply asking the bot to find it for them within the applications already in use.
 
-![Problem](./Images/botfluence.jpg)
+![Problem](images/botfluence.jpg)
 
 ## Customer Testimonial ##
 
@@ -62,7 +62,7 @@ The initial brainstorming session concluded with a white board of ideas and poss
 
 To address CME Group's goals, the dialog flow solution was created to streamline the conversation between the user and the bot with the following architecture.
 
- ![Architecture Diagram](https://raw.githubusercontent.com/kottofy/CME-HelpDeskBot/master/Images/Architecture.PNG?token=ADIOvVn0YOZiWUTZ2qe_k84kzPOWvKyHks5ZHeAlwA%3D%3D)
+ ![Architecture Diagram](images/Architecture.PNG)
 
 The following steps were taken to create the overall solution:
 1. Install [Visual Studio Code](https://code.visualstudio.com/)
