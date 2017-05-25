@@ -13,7 +13,8 @@ language: The language of the article (e.g.: [English])
 verticals: [Financial Services]
 ---
 
-Chicago Mercantile Exchange Group and Microsoft joined forces to build a chat bot to enable users access to more convienent searching capabilities of the documentation and data stored in their Confluence content management system. 
+Chicago Mercantile Exchange Group and Microsoft joined forces to build a chat bot so users
+can easily search their Confluence content management system's documentation and data. 
 
 - Key Technologies
   - [Bot Framework](https://dev.botframework.com/)
@@ -39,9 +40,19 @@ Through the CME Globex electronic trading platform, users worldwide can access t
  
 ## Problem Statement ##
 
-As employees for an institution with strong security regulations due to the handling of sensitive data and intellectual property, CME Group developers enforce many standards in their applications such as password or content policies. Because there are far too many to memorize, CME developers often find themselves interrupting their workflow to search Confluence, CME Group's internal document store, for the proper policy. This results in a loss of time due to context switching. 
+CME employees have strong security regulations because they handle sensitive data and intellectual property. 
 
-A bot accessible through an application used on a regular basis such as Skype, one of the company's internal messaging systems, or through a Visual Studio plugin would help the developers to remain focused while searching for the proper policy by simply asking the bot to find it for them within the applications already in use.
+CME Group developers are required to enforce many application standards such as password or content 
+policies. Since there are far too many policies to memorize, CME developers often find themselves 
+interrupting their workflow to search Confluence (CME Group's internal document store) for the proper 
+policy. These interruptions and searches require context switching and result in an excessive amount 
+of lost time. 
+
+To help developers remain focused while searching for the proper policy, Microsoft and CME decided to 
+develop a bot CME developers could access through an application used on a regular basis (such as Skype, 
+one of the company's internal messaging systems) or through a Visual Studio plugin. Developers could 
+search for the proper policy by simply asking the bot (within an application they were already using) 
+to find it for them. 
 
 ![Problem](images/botfluence.jpg)
 
@@ -51,7 +62,8 @@ A bot accessible through an application used on a regular basis such as Skype, o
  
 ## Solution and Steps ##
 
-The objective of the project was to build a chat bot that integrates into a CME Group developer's existing workflow, making it easier to search for the documentation necessary to securing private information. 
+The project objective was to build a chat bot that integrates into a CME Group developer's existing 
+workflow, making it easier to search for the documentation necessary to securing private information. 
 
 <!--TODO: Insert solution image of bot in action -->
 ![placeholder](http://placehold.it/350x150?text=Placeholder)
@@ -60,11 +72,13 @@ The initial brainstorming session concluded with a white board of ideas and poss
 
 ![white board session](images/white-board-session.jpg)
 
-To address CME Group's goals, the dialog flow solution was created to streamline the conversation between the user and the bot with the following architecture.
+To address CME Group's goals, we created a dialog flow solution to streamline the conversation between 
+the user and the bot using the following architecture:
 
  ![Architecture Diagram](images/architecture.png)
 
-The following steps were taken to create the overall solution:
+We took the following steps to create the overall solution:
+
 1. Install [Visual Studio Code](https://code.visualstudio.com/)
 2. Install [Node.js](https://nodejs.org/en/) and the [Bot Builder SDK for Node.js](https://docs.botframework.com/en-us/downloads/)
 3. Install the [Bot Framework Emulator](https://docs.microsoft.com/en-us/bot-framework/debug-bots-emulator)
@@ -73,24 +87,26 @@ The following steps were taken to create the overall solution:
 6. Set up access to a [Confluence](https://www.atlassian.com/software/confluence) CMS and configure the REST API requests
 7. Improve the conversational flow and retrain LUIS
 
-Future Opportunities include:
-- Expand the search offerings of the chat bot to other employees in the organization to all data within the CMS
-- Allow accessibility of the bot to the external community as a Q&A bot
-- Expose the existing setup to canvases such as Skype or potentially Visual Studio add-in
-- Integrate Text-to-Speech and Speech-to-Text cognitive services to improve conversational interaction with the bot
-
 ## Technical Delivery ##
 
-The core bot functionality was built by leveraging the [Bot Builder SDK for Node.js](https://docs.microsoft.com/en-us/bot-framework/resources-tools-downloads), which enabled a quick start in Visual Studio Code and a feature-rich environment for building the bot. The bot uses the Knowledge Base Design Pattern with search functionality to return information from CME Group's Confluence CMS. Once the bot kicks off a search, it makes HTTP requests through the Confluence REST API which returns results where the query matches the title of the articles and the part of the text inside each document. The results are then formatted and presented back to the user in a carousel of cards.
+We built the core bot functionality by leveraging the [Bot Builder SDK for Node.js](https://docs.microsoft.com/en-us/bot-framework/resources-tools-downloads); this enabled a quick start in Visual Studio Code and a feature-rich environment for bot building. 
+
+The bot uses the Knowledge Base Design Pattern with search functionality to return information from CME Group's Confluence CMS. Once the bot kicks off a search, it makes HTTP requests through the Confluence REST API; this returns results where the query matches the title of the articles and the part of the text inside each document. The results are then formatted and presented back to the user in a card carousel.
 
 <!--TODO: Insert view of cards, maybe some code snippets-->
 ![placeholder](http://placehold.it/350x150?text=Placeholder)
 
-<!-- Need acess to the code to fully flesh out this section -->
+<!-- Need access to the code to fully flesh out this section -->
 ### Document Search Dialog ###
-The user can activate the bot with a greeting. The bot says hello, pompts the user to search, and kicks off a waterfall of dialogs. It expects the user to ask for a resource in which it makes a call to LUIS to parse the message. Once the bot has it's information returned from LUIS, it enters the waterfall. 
+
+1. The user activates the bot with a greeting 
+2. The bot says hello, prompts the user to search, and kicks off a dialog waterfall 
+3. The bot waits for the user to ask for a resource 
+4. The bot takes the user request and calls LUIS to parse the message 
+5. Once LUIS parses the message information and the bot receives it, it enters the waterfall. 
 
 The actions included in the waterfall are:
+
 - root or default (/)
   - prompts user enter a search or ask for help
 - help
@@ -103,11 +119,16 @@ The actions included in the waterfall are:
 <!--TODO: Insert code snippet or image for dialog -->
 ![placeholder](http://placehold.it/350x150?text=Placeholder)
 
-<!-- Need acess to the code to fully flesh out this section -->
+<!-- Need access to the code to fully flesh out this section -->
 ### Adding LUIS Entities to Enhance Search ###
-The [Language Understanding Intelligent Service (LUIS)](https://www.luis.ai/home/index) was used to parse any intents and entities the user entered to guide the search of the Confluence content. 
+The [Language Understanding Intelligent Service (LUIS)](https://www.luis.ai/home/index) was 
+used to parse the user input.
+
+LUIS receives the user's intents and entities and  parses them. The returned results guide 
+the Confluence content search. 
 
 The intents created for this bot were:
+
 - Greeting
 - Search
 - Help
@@ -115,29 +136,72 @@ The intents created for this bot were:
 - None
 
 The entities created for this bot were:
+
 - search term
 
 <!--TODO: Insert code snippet or image for LUIS -->
 ![placeholder](http://placehold.it/350x150?text=Placeholder)
 
+### Prerequisite Steps and Intial Roadblocks ###
 
+There were several prerequisite steps and installations before we could begin working 
+on this project, which are listed above. 
+
+Installing Visual Studio Code and Node.js allowed us to start building our bot, but 
+when it came time to test the bot for the first time we couldn't use the Bot Framework 
+Channel Emulator. Because CME is a financial institution with a lot of protective 
+regulations, employees can only download software available through their internal store. 
+The Channel Emulator we needed to test our bot was not on that list of approved downloads. 
+While we waited for a CME representative to approve the Channel Emulator so we could 
+download it, we switched our bot to use the ConsoleConnector instead of the standard 
+ChatConnecter. This allowed us to remain productive and test our conversation flow before 
+adding in UI elements meant for rich channels. 
+
+We were unable to access the LUIS API while connected to CME's internal network. Because 
+natural language (and therefore LUIS), was essential to the bot's purpose, we needed to 
+connect to CME's guest wireless network instead to develop and test our bot. This lead 
+to yet another problem--all of the data we needed to access through CME's Confluence was
+only available while we were on CME's internal network itself, not through the guest 
+wireless network. This put us in a Catch-22 before we had even begun any real project 
+development - do we use natural language (the core purpose of the bot), or do we use 
+real data (the foundation of the bot's knowledge)? To overcome this roadblock, we set 
+up a test Confluence site that looks like a micro version of CME's real Confluence site 
+and used it to do our testing.
+
+
+### Future Opportunities ###
+
+Future business opportunities include:
+
+- Expand the chat bot search offerings both to other employees in the organization and to all CMS data
+- Expand bot accessibility (as a Q&A bot) to the external community 
+- Expose the existing setup to canvases (such as Skype) or as a potential Visual Studio add-in
+- Integrate Text-to-Speech and Speech-to-Text cognitive services to improve conversational interaction with the bot
+ 
 Future technical opportunities include:
+
 - Improving the authentication flow to allow any user to login to their Confluence account
 - Retrain LUIS to better identify intents and entities
-- Structure the dialog to allow LUIS to be utilized after the waterfall has begun
-  - This is a known flaw with the Bot Framework that is being addressed
-
- ### Prerequisite Steps and Intial Roadblocks ###
-
-There were several prerequiste steps and installations before we could begin working on this project, which are listed above. Installing Visual Studio Code and Node.js allowed us to start building our bot, however when it came time to test the bot for the first time we couldn't use the Bot Framework Channel Emulator. Because CME is a financial institution with a lot of protective regulations, employees can only download software available through their internal store. The Channel Emulator we needed to test our bot was not on that list of approved downloads. While we waited for a representative from CME to approve the Channel Emulator as an approved download, we switched our bot to use the ConsoleConnector instead of the standard ChatConnecter. This allowed us to remain productive and test our conversation flow before adding in UI elements meant for rich channels. 
-
-The second intial problem we ran into was not being able to access the LUIS API while connected to CME's internal network. Because natural language, and therefore LUIS, were essential to the purpose of our bot, we needed to connect to CME's guest wifi instead to develop and test our bot. This lead to yet another problem because all of the data we needed to access through CME's Confluence was only avaialbe while we were on CME's internal network itself, not through the guest wifi. This put us in a Catch 22 before we had even begun any real development of this project- do we use natural language, the core purpose of the bot, or do we use real data, the foundation of the bot's knowledge. To overcome this roadblock, we set up a test Confluence site that looks like a micro version of CME's real Confluence site to do our testing.
+- Structure the dialog to use LUIS after the waterfall has begun (this known Bot Framework flaw is being addressed)
 
 ## Conclusion ##
 
-In the weeks following, CME Group can publish this bot to preferred channels such as Skype or Slack and enable all developers to use the application. There are many future possibilities that can be enabled as well such as extending the solution to all CME Group employees to increase productivity across the entire organization. Additional goals are to include cognitive services to improve the conversational flow such as converting speech to text and text to speech. The bot’s abilities to identify the intent of the user and the search term will get better as LUIS gathers more data and is retrained.
+CME Group can publish this bot to their preferred channels (such as Skype or Slack) so all 
+developers can use the application. 
 
-CME Group also has many of the tools approved for building future projects with the Bot Framework because of this project and a setup for operating with the internal network such as the Bot Framework and Guest Wifi. Once this bot is approved by the security team and is placed in production, CME Group developers and users will have the opportunity to create and explore the possibilities of enabling all customers and employees with bots to increase productivity everywhere.
+With this bot, CME Group can extend the solution to all their employees to increase 
+productivity across the entire organization. 
+
+Additional goals include cognitive services to improve the conversational flow such as 
+converting speech to text and text to speech. The bot’s abilities to identify the user's 
+intent and the search term will get better as LUIS gathers more data and is retrained.
+
+Because of this project, CME Group has many of the tools approved for building future 
+projects with the Bot Framework and a setup for operating with the internal network such 
+as the Bot Framework and Guest Wifi. Once this bot is approved by the security team and is 
+placed in production, CME Group developers and users will have the opportunity to create 
+and explore the possibilities of enabling all customers and employees with bots to 
+increase productivity everywhere.
 
 ## Additional resources ##
 
