@@ -1,3 +1,7 @@
+node_modules
+.gitattributes
+.gitignore
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
