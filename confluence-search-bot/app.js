@@ -50,14 +50,20 @@ bot.dialog('Search', [
 ]).triggerAction({
     matches: 'Search',
     onInterrupted: function (session) {
-        session.send('Please provide a search term');
+        session.send('Sorry I did not understand or something happened. Please ask me to search for something or type \'help\' for assistance.');
     }
 });
 
 bot.dialog('Help', function (session) {
-    session.endDialog('Hi! Try asking me things like \'search hotels in Seattle\', \'search hotels near LAX airport\' or \'show me the reviews of The Bot Resort\'');
+    session.endDialog('I\'m here to help! Try asking me things like \'search for password policy\' or \'find me the email templates\'');
 }).triggerAction({
     matches: 'Help'
+});
+
+bot.dialog('Greeting', function (session) {
+    session.endDialog('Hi! I can help you search Confluence. Try asking me things like \'search for password policy\' or \'find me the email templates\'');
+}).triggerAction({
+    matches: 'Greeting'
 });
 
 function ResultAsAttachment(result) {
