@@ -7,7 +7,7 @@ module.exports = {
 
             var username = process.env.CONFLUENCE_USERNAME,
                 password = process.env.CONFLUENCE_PASSWORD,
-                url = 'http://' + username + ':' + password + '@confluencesite.atlassian.net/wiki/rest/api/content/search?cql=text~' + searchTerm;
+                url = 'http://' + username + ':' + password + '@confluencesite.atlassian.net/wiki/rest/api/search?cql=text~' + searchTerm;
 
             var results = [];
 

@@ -35,7 +35,7 @@ bot.dialog('Search', [
             Search.search(searchTerm)
                 .then(function (results) {
 
-                    if (results.length>0) {
+                    if (results.length > 0) {
                         var message = new builder.Message()
                             .attachmentLayout(builder.AttachmentLayout.carousel)
                             .attachments(results.map(ResultAsAttachment));
@@ -51,7 +51,7 @@ bot.dialog('Search', [
 ]).triggerAction({
     matches: 'Search',
     onInterrupted: function (session) {
-        session.endDialog('Sorry I did not understand or something happened. Please ask me to search for something or type \'help\' for assistance.');
+        session.send('Sorry I did not understand or something happened. Please ask me to search for something or type \'help\' for assistance.');
     }
 });
 
@@ -74,12 +74,19 @@ bot.dialog('Closing', function (session) {
 });
 
 function ResultAsAttachment(result) {
-    return new builder.HeroCard()
-        .title(result.title)
+
+    var regexp = /@@@.*?@@@|&quot;|&hellip;/g;
+
+    var title = result.title.replace(regexp, "");
+    var excerpt = result.excerpt.replace(regexp, "");
+
+        return new builder.HeroCard()
+        .title(title)
+        .subtitle(excerpt)
         .buttons([
             new builder.CardAction()
-                .title('More details')
+                .title('Open page')
                 .type('openUrl')
-                .value(process.env.CONFLUENCE_SITE_URL + "/wiki/rest/api/content/" + result.id)
+                .value(process.env.CONFLUENCE_SITE_URL + "/wiki" + result.url)
         ]);
 }
