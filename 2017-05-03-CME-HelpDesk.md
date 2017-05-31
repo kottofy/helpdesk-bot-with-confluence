@@ -1,16 +1,17 @@
 ---
 layout: post
-title:  ""
-author: "Bots in the Workplace to Increase Productivity"
-#author-link: "Add URL for author's Twitter account here"
-#author-image: "{{ site.baseurl }}/images/authors/photo.jpg"
+title:  "Bots in the Workplace to Increase Productivity"
+author: [Kristin Ottofy, Justine Cocchi]
+author-link: ["https://twitter.com/kristinottofy", "https://twitter.com/justinecocchi"]
+author-image: "{{ site.baseurl }}/images/team-picture.png"
 date:   2017-05-03
-categories: [Bot Framework]
+categories: [Bot Framework, Conversation as a Platform]
 color: "blue"
-#image: "{{ site.baseurl }}/images/imagename.png" #should be ~350px tall
-excerpt: 
+image: "{{ site.baseurl }}/images/botdemo.gif"
+excerpt: "Chicago Mercantile Exchange Group and Microsoft joined forces to build a chat bot so users
+can easily search their Confluence content management system's documentation and data."
 language: The language of the article (e.g.: [English])
-verticals: [Financial Services]
+verticals: [Financial, Trade, Exchange, Energy, Agriculture, Metals, Weather, Real Estate]
 ---
 
 Chicago Mercantile Exchange Group and Microsoft joined forces to build a chat bot so users
