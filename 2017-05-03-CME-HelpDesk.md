@@ -66,7 +66,7 @@ The project objective was to build a chat bot that integrates into a CME Group d
 workflow, making it easier to search for the documentation necessary to securing private information. 
 
 <!--TODO: Insert solution image of bot in action -->
-![placeholder](http://placehold.it/350x150?text=Placeholder)
+![bot demo](images/botdemo.gif)
 
 The initial brainstorming session concluded with a white board of ideas and possibilities for the bot.
 
@@ -94,7 +94,7 @@ We built the core bot functionality by leveraging the [Bot Builder SDK for Node.
 The bot uses the Knowledge Base Design Pattern with search functionality to return information from CME Group's Confluence CMS. Once the bot kicks off a search, it makes HTTP requests through the Confluence REST API; this returns results where the query matches the title of the articles and the part of the text inside each document. The results are then formatted and presented back to the user in a card carousel.
 
 <!--TODO: Insert view of cards, maybe some code snippets-->
-![placeholder](http://placehold.it/350x150?text=Placeholder)
+![carousel](images/carousel.png)
 
 <!-- Need access to the code to fully flesh out this section -->
 ### Document Search Dialog ###
@@ -103,44 +103,84 @@ The bot uses the Knowledge Base Design Pattern with search functionality to retu
 2. The bot says hello, prompts the user to search, and kicks off a dialog waterfall 
 3. The bot waits for the user to ask for a resource 
 4. The bot takes the user request and calls LUIS to parse the message 
-5. Once LUIS parses the message information and the bot receives it, it enters the waterfall. 
+5. Once LUIS parses the message information and the bot receives it, it enters the waterfall of dialogs. 
 
 The actions included in the waterfall are:
 
-- root or default (/)
-  - prompts user enter a search or ask for help
-- help
-  - displays information regarding how to interact with the bot
-- search
-  - takes a message or query and returns results
-- end
-  - when a user says "thank you" or similar closing, the bot conversation ends
+- Default
+    - Prompts user enter a search or ask for help
+- Greeting
+    - Says hi to the user and informs how to search with the bot
+- Help
+    - Displays information regarding how to interact with the bot
+- Search
+    - Takes a message or query and returns results after searching the Confluence content
+- Closing
+    - When a user says "thank you" or similar closing, the bot conversation ends
 
-<!--TODO: Insert code snippet or image for dialog -->
-![placeholder](http://placehold.it/350x150?text=Placeholder)
+```js
+var bot = new builder.UniversalBot(connector, function (session) {
+    session.send('Sorry, I did not understand \'%s\'. Type \'help\' if you need assistance.', session.message.text);
+});
+
+bot.dialog('Search', [
+    function (session, args, next) {
+    ...EXTRACTED...
+}
+]).triggerAction({
+    matches: 'Search',
+    onInterrupted: function (session) {
+        session.send('Sorry I did not understand or something happened. Please ask me to search for something or type \'help\' for assistance.');
+    }
+});
+
+bot.dialog('Help', function (session) {
+    session.endDialog('I\'m here to help! Try asking me things like \'search for password policy\' or \'find me the email templates\'');
+}).triggerAction({
+    matches: 'Help'
+});
+
+bot.dialog('Greeting', function (session) {
+    session.endDialog('Hi! I can help you search Confluence. Try asking me things like \'search for password policy\' or \'find me the email templates\'');
+}).triggerAction({
+    matches: 'Greeting'
+});
+
+bot.dialog('Closing', function (session) {
+    session.endDialog('Thank you for the chat! Have a great day!');
+}).triggerAction({
+    matches: 'Closing'
+});
+```
 
 <!-- Need access to the code to fully flesh out this section -->
-### Adding LUIS Entities to Enhance Search ###
+### Adding LUIS AI to Enhance Search ###
 The [Language Understanding Intelligent Service (LUIS)](https://www.luis.ai/home/index) was 
 used to parse the user input.
 
-LUIS receives the user's intents and entities and  parses them. The returned results guide 
+LUIS receives the user's intents and entities and parses them. The returned results guide 
 the Confluence content search. 
 
-The intents created for this bot were:
+The LUIS Intents created for this bot to reflect the bot dialog were:
 
 - Greeting
+    - Ex. "Hello", "Hi"
 - Search
+    - Ex. "Search", "Search for", "Find me", "Look for", or just the search term
 - Help
+    - "Help", "Please help"
 - Closing
+    - Ex. "Thank you", "Goodbye", "See ya"
 - None
 
-The entities created for this bot were:
+The LUIS entities created for this bot were:
 
 - search term
+    - Ex. "password policy", "html standards", "entertainment", "policy"
 
-<!--TODO: Insert code snippet or image for LUIS -->
-![placeholder](http://placehold.it/350x150?text=Placeholder)
+Below is a list of examples from LUIS of trained utterances in the Search Entity.
+
+![search intent](images/search-intent.png)
 
 ### Prerequisite Steps and Intial Roadblocks ###
 
